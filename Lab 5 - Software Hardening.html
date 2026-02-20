@@ -1012,7 +1012,7 @@ pre.mermaid[data-processed=true] { white-space: unset; }
 <p>Before exiting your current bash session, start a second terminal window and ensure you can still use <code class="inline-code">sudo</code></p>
 </li>
 <li>
-<p>Does <code class="inline-code">debsums</code> complain about your modified <code class="inline-code">sudo</code> program? How about <code class="inline-code">dpkg</code> with the verify option? - <em>submission question!</em></p>
+<p>Does <code class="inline-code">debsums</code> complain about your modified <code class="inline-code">sudo</code> program? How about <code class="inline-code">dpkg</code> with the verify option? - <strong>submission question</strong></p>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="" data-joplin-source-open="```
 " data-joplin-source-close="
 ```">debsums sudo | grep /usr/bin/sudo
@@ -1020,17 +1020,17 @@ sudo dpkg --verify sudo </pre><pre class="hljs"><code>debsums <span class="hljs-
 <span class="hljs-built_in">sudo</span> dpkg --verify <span class="hljs-built_in">sudo</span> </code></pre></div>
 </li>
 <li>
-<p>Use the list option of <code class="inline-code">dpkg-statoverride</code> to view all programs with overrides on your system - <em>screenshot!</em></p>
+<p>Use the list option of <code class="inline-code">dpkg-statoverride</code> to view all programs with overrides on your system - <strong>screenshot</strong></p>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="" data-joplin-source-open="```
 " data-joplin-source-close="
 ```">dpkg-statoverride --list </pre><pre class="hljs"><code>dpkg-statoverride <span class="hljs-comment">--list </span></code></pre></div>
 </li>
 </ol>
-<h1 id="apparmor">Apparmor</h1>
+<h1 id="apparmor">AppArmor</h1>
 <ol>
 <li>
 <p>Run <code class="inline-code">aa-status</code> to see what the current state of <code class="inline-code">apparmor</code> is on your VM</p>
-<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="" data-joplin-source-open="```
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
 ```">sudo aa-status </pre><pre class="hljs"><code><span class="hljs-built_in">sudo</span> aa-status </code></pre></div>
 <ul>
@@ -1039,21 +1039,21 @@ sudo dpkg --verify sudo </pre><pre class="hljs"><code>debsums <span class="hljs-
 </li>
 <li>
 <p>Try the <code class="inline-code">aa-unconfined</code> utility to see what processes are running that have <code class="inline-code">tcp</code> or <code class="inline-code">udp</code> ports and their <code class="inline-code">apparmor</code> status</p>
-<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="" data-joplin-source-open="```
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
 ```">sudo aa-unconfined </pre><pre class="hljs"><code><span class="hljs-built_in">sudo</span> aa-unconfined </code></pre></div>
 </li>
 <li>
-<p>Review the list of profiles contained in the <a data-from-md="" title="https://packages.ubuntu.com/noble/all/apparmor-profiles/filelist" href="https://packages.ubuntu.com/noble/all/apparmor-profiles/filelist">Ubuntu 24.04 apparmor-profiles package list of files</a> package. Are there profiles in that package for the <code class="inline-code">/etc/apparmor.d</code> directory which would confine software that is running unconfined on your system now? - <em>submission question!</em></p>
+<p>Review the list of profiles contained in the <a data-from-md="" title="https://packages.ubuntu.com/noble/all/apparmor-profiles/filelist" href="https://packages.ubuntu.com/noble/all/apparmor-profiles/filelist">Ubuntu 24.04 apparmor-profiles package list of files</a> package. Are there profiles in that package for the <code class="inline-code">/etc/apparmor.d</code> directory which would confine software that is running unconfined on your system now? - <strong>submission question</strong></p>
 <ul>
 <li><strong>Tip:</strong> Compare the unconfined list to the list of available profiles in the online repository!</li>
 </ul>
 </li>
 <li>
 <p>Try using the &ndash;paranoid option for <code class="inline-code">aa-unconfined</code> to see if there are processes which could be confined by the <code class="inline-code">apparmor-profiles</code> package which <code class="inline-code">aa-unconfined</code> did not show without that option</p>
-<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="" data-joplin-source-open="```
+<div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
-```">sudo aa-unconfined --paranoid </pre><pre class="hljs"><code>sudo aa-unconfined <span class="hljs-comment">--paranoid </span></code></pre></div>
+```">sudo aa-unconfined --paranoid </pre><pre class="hljs"><code><span class="hljs-built_in">sudo</span> aa-unconfined --paranoid </code></pre></div>
 </li>
 <li>
 <p>Review the content of the <code class="inline-code">apprmor</code> profile for the <code class="inline-code">tcpdump</code> network snooping program</p>
@@ -1064,7 +1064,7 @@ cat /etc/apparmor.d/usr.bin.tcpdump </pre><pre class="hljs"><code><span class="h
 <span class="hljs-built_in">cat</span> /etc/apparmor.d/usr.bin.tcpdump </code></pre></div>
 </li>
 <li>
-<p>Using the <code class="inline-code">apparmor</code> man page, determine the kinds of limitations that are placed on that program by the profile. Explain the lines and be specific about the capabilities and permissions given. - <em>submission question!</em></p>
+<p>Using the <code class="inline-code">apparmor</code> man page, determine the kinds of limitations that are placed on that program by the profile. Explain the lines and be specific about the capabilities and permissions given. - <strong>submission question</strong></p>
 <ul>
 <li><strong>Tip:</strong> You may find the official <a data-from-md="" title="https://www.apparmor.net/" href="https://www.apparmor.net/">AppArmor</a> reference documentation useful, especially the section <a data-from-md="" title="https://gitlab.com/apparmor/apparmor/-/wikis/QuickProfileLanguage#a-quick-guide-to-apparmor-profile-language" href="https://gitlab.com/apparmor/apparmor/-/wikis/QuickProfileLanguage#a-quick-guide-to-apparmor-profile-language">A quick guide to AppArmor profile Language</a>.</li>
 </ul>
@@ -1099,7 +1099,7 @@ dennis$ <span class="hljs-built_in">sudo</span> rndc reload
 dennis$ <span class="hljs-built_in">sudo</span> bash </code></pre></div>
 </li>
 <li>
-<p>List out the <code class="inline-code">sudo</code> configuration for user <code class="inline-code">dennis</code> - <em>screenshot!</em></p>
+<p>List out the <code class="inline-code">sudo</code> configuration for user <code class="inline-code">dennis</code> - <strong>screenshot</strong></p>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
 ```">dennis$ sudo -l </pre><pre class="hljs"><code>dennis$ <span class="hljs-built_in">sudo</span> -l </code></pre></div>
@@ -1136,58 +1136,59 @@ d. In a terminal or powershell window on your host laptop/computer, run <code cl
 </ol>
 <h2 id="mysql-basic-hygiene">MySQL basic hygiene</h2>
 <ol>
-<li>
-<p>Run the <code class="inline-code">mysql_secure_installation</code> script to clean up after the install - <em>screenshot!</em></p>
+<li>Run the <code class="inline-code">mysql_secure_installation</code> script to clean up after the install - <strong>screenshot</strong>
 <ul>
 <li><strong>do not enable password validation</strong></li>
 <li>set the root password to <code class="inline-code">root</code></li>
 <li>remove anonymous users</li>
 <li>disallow remote root login</li>
 <li>remove the test database</li>
-<li>reload the privilege tables<br/>
-NOTE: Depending on your VM configuration you may see an error when trying to execute <code class="inline-code">mysql_secure_installation</code> about the authentication method as follows:</li>
+<li>reload the privilege tables</li>
 </ul>
+</li>
+</ol>
+<p>NOTE: Depending on your VM configuration you may see an error when trying to execute <code class="inline-code">mysql_secure_installation</code> about the authentication method as follows:</p>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
 ```">ali@pc12345678:~$ sudo mysql_secure_installation
 Failed! Error: SET PASSWORD has no significance for user &apos;root&apos;@&apos;localhost&apos; as the authentication method used doesn&apos;t store authentication data in the MySQL server
-
+    
 # This is probably because your MySQL server is not using &quot;mysql_native_password&quot;
 # You can login to MySQL Server and change the root account authentication using the following method:
 ali@pc12345678:~$ sudo mysql
 [sudo] password for ali:
+
 ### &lt; output redacted for clarity &gt;
 mysql&gt; alter user &apos;root&apos;@&apos;localhost&apos; identified with mysql_native_password by &apos;root&apos;;
 Query OK, 0 rows affected (0.02 sec)
 mysql&gt; exit
 Bye</pre><pre class="hljs"><code>ali@pc12345678:~$ <span class="hljs-built_in">sudo</span> mysql_secure_installation
 Failed! Error: SET PASSWORD has no significance <span class="hljs-keyword">for</span> user <span class="hljs-string">&apos;root&apos;</span>@<span class="hljs-string">&apos;localhost&apos;</span> as the authentication method used doesn<span class="hljs-string">&apos;t store authentication data in the MySQL server
-
+    
 # This is probably because your MySQL server is not using &quot;mysql_native_password&quot;
 # You can login to MySQL Server and change the root account authentication using the following method:
 ali@pc12345678:~$ sudo mysql
 [sudo] password for ali:
+
 ### &lt; output redacted for clarity &gt;
 mysql&gt; alter user &apos;</span>root<span class="hljs-string">&apos;@&apos;</span>localhost<span class="hljs-string">&apos; identified with mysql_native_password by &apos;</span>root<span class="hljs-string">&apos;;
 Query OK, 0 rows affected (0.02 sec)
 mysql&gt; exit
 Bye</span></code></pre></div>
-</li>
-<li>
-<p>Access the web page at <code class="inline-code">http://your-vm-ip/roundcube</code> and put in the student account name and password, server <code class="inline-code">localhost</code> to verify that the <code class="inline-code">mysql</code> database service is still running properly - <em>screenshot!</em></p>
-</li>
+<ol start="2">
+<li>Access the web page at <code class="inline-code">http://your-vm-ip/roundcube</code> and put in the student account name and password, server <code class="inline-code">localhost</code> to verify that the <code class="inline-code">mysql</code> database service is still running properly - <em>screenshot!</em></li>
 </ol>
 <h1 id="email-client-access">Email client access</h1>
 <p>Emails clients may try to transmit usernames and passwords in clear text. Depending on the client software, there is no guarantee that all clients will check supported protocols and will use encryption by default when attempting to connect to the server. An external email client should not be able to attempt a connection using unencrypted protocols if it can be helped. Additionally, we do have an internal email client, <code class="inline-code">Roundcube</code>, that uses <code class="inline-code">IMAP</code> locally.</p>
 <ol>
-<li>Given the information above, identify what you would need to change in Dovecot configurations to disable <code class="inline-code">POP3</code> and disallow <code class="inline-code">IMAP</code> from being accessed by remote hosts, and enforce <code class="inline-code">POP3S</code> and <code class="inline-code">IMAPS</code> services. - <em>submission question!</em></li>
-<li>Verify that the changes have taken effect using <code class="inline-code">sudo ss -tlpn | grep dovecot</code> - <em>screenshot</em></li>
+<li>Given the information above, identify what you would need to change in Dovecot configurations to disable <code class="inline-code">POP3</code> and disallow <code class="inline-code">IMAP</code> from being accessed by remote hosts, and enforce <code class="inline-code">POP3S</code> and <code class="inline-code">IMAPS</code> services. - <strong>submission question</strong></li>
+<li>Verify that the changes have taken effect using <code class="inline-code">sudo ss -tlpn | grep dovecot</code> - <strong>screenshot</strong></li>
 <li>Make sure that you can still log into <code class="inline-code">Roundcube</code> at <code class="inline-code">http://your-vm-ip/roundcube</code> and view a user mailbox. <em>- screenshot</em></li>
-<li>Taking a layered security approach what firewall changes would you make to the existing labVM system to limit email clients to only <code class="inline-code">POP3S</code> and <code class="inline-code">IMAPS</code>? Provide commands or output snippets from your firewall configuration - <em>submission question!</em></li>
+<li>Taking a layered security approach what firewall changes would you make to the existing labVM system to limit email clients to only <code class="inline-code">POP3S</code> and <code class="inline-code">IMAPS</code>? Provide commands or output snippets from your firewall configuration - <strong>submission question</strong></li>
 </ol>
 <h1 id="known-vulnerabilities">Known vulnerabilities</h1>
 <ol>
-<li>Is your LabVM&apos;s RoundCube installation vulnerable to <a data-from-md="" title="https://nvd.nist.gov/vuln/detail/CVE-2025-49113" href="https://nvd.nist.gov/vuln/detail/CVE-2025-49113">CVE-2025-49113</a>? - <em>submission question!</em>
+<li>Is your LabVM&apos;s RoundCube installation vulnerable to <a data-from-md="" title="https://nvd.nist.gov/vuln/detail/CVE-2025-49113" href="https://nvd.nist.gov/vuln/detail/CVE-2025-49113">CVE-2025-49113</a>? - <strong>submission question</strong>
 <ul>
 <li>The following links are provided as examples of official reference regarding this issue:
 <ul>
@@ -1203,7 +1204,7 @@ Bye</span></code></pre></div>
 </li>
 </ul>
 </li>
-<li>Is your VM susceptible to the <a data-from-md="" title="https://heartbleed.com" href="https://heartbleed.com">heartbleed vulnerability</a>? Show what you did to check. - <em>submission question!</em></li>
+<li>Is your VM susceptible to the <a data-from-md="" title="https://heartbleed.com" href="https://heartbleed.com">heartbleed vulnerability</a>? Show what you did to check. - <strong>submission question</strong></li>
 </ol>
 <h1 id="unexpected-programs-on-your-system">Unexpected programs on your system</h1>
 <ol>
@@ -1245,7 +1246,7 @@ find / -<span class="hljs-built_in">type</span> f -executable &gt;/tmp/filelist.
 
 <span class="hljs-built_in">rm</span> /tmp/filelist.$$</code></pre></div>
 <ol start="2">
-<li>Either modify the script to improve the output to remove some of the known sources or analyze the output to see if there are any unexpected and potentially suspicious programs on your lab VM. - <em>submission question!</em></li>
+<li>Either modify the script to improve the output to remove some of the known sources or analyze the output to see if there are any unexpected and potentially suspicious programs on your lab VM. - <strong>submission question</strong></li>
 </ol>
 </div></div>
 					</body>
