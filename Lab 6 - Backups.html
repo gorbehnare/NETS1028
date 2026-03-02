@@ -1130,7 +1130,7 @@ ssh-keygen
 ```">date=$(date &apos;+%F-%H-%M&apos;) ; sudo rsync -ahi --link-dest=/backups/latest --delete --exclude={/proc/*,/tmp/*,/run/*,/dev/*,/sys/*,/mnt/*,/lost+found,/media/*,/backups,/swap.img} / root@&lt;backup-srvr-ip&gt;:/backups/$date &amp;&amp; sudo ssh root@&lt;backup-srvr-ip&gt; ln -nsf /backups/$date /backups/latest</pre><pre class="hljs"><code><span class="hljs-built_in">date</span>=$(<span class="hljs-built_in">date</span> <span class="hljs-string">&apos;+%F-%H-%M&apos;</span>) ; <span class="hljs-built_in">sudo</span> rsync -ahi --link-dest=/backups/latest --delete --exclude={/proc/*,/tmp/*,/run/*,/dev/*,/sys/*,/mnt/*,/lost+found,/media/*,/backups,/swap.img} / root@&lt;backup-srvr-ip&gt;:/backups/<span class="hljs-variable">$date</span> &amp;&amp; <span class="hljs-built_in">sudo</span> ssh root@&lt;backup-srvr-ip&gt; <span class="hljs-built_in">ln</span> -nsf /backups/<span class="hljs-variable">$date</span> /backups/latest</code></pre></div>
 </li>
 <li>
-<p>Leave your VMs running for at least 20 minutes so changes can happen to your VM and then rerun the backup to see how much new or changed data got transferred - <em>screenshot the command and only the first screenful of output</em></p>
+<p>Leave your VMs running for at least 20 minutes so changes can happen to your VM and then rerun the backup to see how much new or changed data got transferred - <strong>screenshot</strong> <em>the command and only the first screenful of output</em></p>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
 ```">date=$(date &apos;+%F-%H-%M&apos;) ; sudo rsync -ahiv --link-dest=/backups/latest --delete --exclude={/proc/*,/tmp/*,/run/*,/dev/*,/sys/*,/mnt/*,/lost+found,/media/*,/backups} / root@&lt;backup-srvr-ip&gt;:/backups/$date &amp;&amp; sudo ssh root@&lt;backup-srvr-ip&gt; ln -nsf /backups/$date /backups/latest</pre><pre class="hljs"><code><span class="hljs-built_in">date</span>=$(<span class="hljs-built_in">date</span> <span class="hljs-string">&apos;+%F-%H-%M&apos;</span>) ; <span class="hljs-built_in">sudo</span> rsync -ahiv --link-dest=/backups/latest --delete --exclude={/proc/*,/tmp/*,/run/*,/dev/*,/sys/*,/mnt/*,/lost+found,/media/*,/backups} / root@&lt;backup-srvr-ip&gt;:/backups/<span class="hljs-variable">$date</span> &amp;&amp; <span class="hljs-built_in">sudo</span> ssh root@&lt;backup-srvr-ip&gt; <span class="hljs-built_in">ln</span> -nsf /backups/<span class="hljs-variable">$date</span> /backups/latest</code></pre></div>
@@ -1146,8 +1146,8 @@ du -sh /backups/*/</pre><pre class="hljs"><code><span class="hljs-built_in">ls</
 <span class="hljs-built_in">du</span> -sh /backups/*/</code></pre></div>
 </li>
 </ol>
-<h2 id="remote-restore-with-rsync">Remote restore with rsync</h2>
-<p>To restore a backup, we reverse the process and copy files from the backups repository to wherever we want to have them. We can use the rsync program or we can just find and manually copy whatever files we want. Perform the following tasks on the original Linux server VM, not the backup server.</p>
+<h2 id="remote-restore-with-rsync">Remote restore with <code class="inline-code">rsync</code></h2>
+<p>To restore a backup, we reverse the process and copy files from the backups repository to wherever we want to have them. We can use the <code class="inline-code">rsync</code> program or we can just find and manually recover whatever files we want. Perform the following tasks on the original Lab Linux VM, not the backup server.</p>
 <ol>
 <li>
 <p>Create a staging directory to restore files into</p>
@@ -1156,7 +1156,7 @@ du -sh /backups/*/</pre><pre class="hljs"><code><span class="hljs-built_in">ls</
 ```">mkdir ~/restoredfiles </pre><pre class="hljs"><code><span class="hljs-built_in">mkdir</span> ~/restoredfiles </code></pre></div>
 </li>
 <li>
-<p>Restore everything from our most recent home directory backup, and use the credentials we used to make the backup to keep the lab simple - <strong>screenshot</strong></p>
+<p>Restore everything from our most recent home directory backup, and use the same <code class="inline-code">root</code> credentials we used to make the backup to keep the lab simple - <strong>screenshot</strong></p>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
 ```">cd ~
