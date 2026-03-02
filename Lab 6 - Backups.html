@@ -1087,13 +1087,13 @@ sudo du -sh ~/data ~/data4 </pre><pre class="hljs"><code><span class="hljs-built
 <p>In this example, to keep this lab simple, we will just use <code class="inline-code">rsync</code> with SSH to create versioned backups on a remote backup server from our existing Linux VM using the <code class="inline-code">root</code> account. Please note, using the <code class="inline-code">root</code> account with SSH access is NOT recommended in production or for any kind of deployment. If using this backup method in a production environment, additional mitigations need to be implemented, such as using account other than the root on the backup server, and limiting ssh access to specific hosts. The main purpose of this lab activity is to become familiar with remote backups created by <code class="inline-code">rsync</code>.</p>
 <ol>
 <li>
-<p>Create a new VM to use as a backup server. Install Ubuntu 24.04 LTS, with <code class="inline-code">ssh</code> installed, and add one extra drive during the installation, <code class="inline-code">20GB</code> in size. Mount the extra drive at <code class="inline-code">/backups</code>.</p>
+<p>Create a new VM to use as a backup server. Install Ubuntu 24.04 LTS, with <code class="inline-code">ssh</code>, and add one extra <code class="inline-code">20 GB</code> virtual drive to the system Mount the drive at <code class="inline-code">/backups</code>.</p>
 </li>
 <li>
-<p>When the new backup server is installed, enable root access using keys for ssh by adding your public key from your existing server VM</p>
+<p>When the new backup server installation is completed, enable <code class="inline-code">root</code> access using keys for SSH by adding your public key from your existing Lab Linux VM</p>
 <ul>
 <li>
-<p>On the existing Lab Linux VM, create RSA keys for ssh if you don&rsquo;t already have them:</p>
+<p>On the existing Lab Linux VM, create keys for <code class="inline-code">ssh</code> if you don&rsquo;t already have them:</p>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
 ```">sudo bash
@@ -1107,7 +1107,7 @@ ssh-keygen
 <span class="hljs-built_in">exit</span> </code></pre></div>
 </li>
 <li>
-<p>On the backup server, install the public key from the previous server VM&rsquo;s root account:</p>
+<p>On the backup server, install the <code class="inline-code">public key</code> from the previous server VM&rsquo;s root account:</p>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
 ```">sudo vi /root/.ssh/authorized_keys </pre><pre class="hljs"><code><span class="hljs-built_in">sudo</span> vi /root/.ssh/authorized_keys </code></pre></div>
