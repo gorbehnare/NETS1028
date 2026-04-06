@@ -1106,19 +1106,19 @@ rm nets1028-vpnclient-vpnfiles.tgz </pre><pre class="hljs"><code><span class="hl
 <span class="hljs-comment"># stop and start the VPN service, and you should be notified to use the `systemd-tty-ask-password-agent` tool to supply the passphrase</span></code></pre></div>
 </li>
 <li>
-<p>Verify the service is running without errors: - <strong>screenshot</strong></p>
-</li>
-</ol>
+<p>Verify the service is running without errors. Take screenshots of the output of the following on both the client and the server: - <strong>screenshot</strong></p>
 <h5 id="on-the-client">On the client:</h5>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
-```">    systemctl status openvpn@nets1028-vpnclient
-    ip address show</pre><pre class="hljs"><code>    systemctl status openvpn@nets1028-vpnclient
-    ip address show</code></pre></div>
-<h5 id="on-the-server">On the server:</h5>
+```">systemctl status openvpn@nets1028-vpnclient
+ip address show</pre><pre class="hljs"><code>systemctl status openvpn@nets1028-vpnclient
+ip address show</code></pre></div>
+<h5 id="and-on-the-server">And On the server:</h5>
 <div class="joplin-editable"><pre class="joplin-source" data-joplin-language="bash" data-joplin-source-open="```bash
 " data-joplin-source-close="
-```">    sudo cat /var/log/openvpn/openvpn-status.log</pre><pre class="hljs"><code>    <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">cat</span> /var/log/openvpn/openvpn-status.log</code></pre></div>
+```">sudo cat /var/log/openvpn/openvpn-status.log</pre><pre class="hljs"><code><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">cat</span> /var/log/openvpn/openvpn-status.log</code></pre></div>
+</li>
+</ol>
 <h1 id="grading">Grading</h1>
 <p>Submit your results and screenshots as per instructions posted on Blackboard. Everywhere there is a screenshot marker in the instructions above, you must capture enough to show the command(s) you ran and the full relevant results of running them.</p>
 </div></div>
